@@ -1,0 +1,85 @@
+---
+title: "Resumen de Demografía"
+author: "Carla Sánchez"
+date: "9/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ¿Qué es la demografía?
+Es el estudio de la población. 
+
+Estudio de aquellos procesos que determinan la formación, conservación y desaparición de poblaciones. Tales procesos son la fecundidad, mortalidad y movilidad
+
+## ¿Qué es una población?
+Conjunto de individuos constituidos de forma estable. 
+
+Forma estable:existencia de una continuidad en el tiempo que solo puede verse asegurada mediante la reproducción.
+
+Se define por las características que trazan su perfil y sus límites.
+
+Las poblaciones tienden a perpetuarse y permnecer, pero también se extinguen.
+
+### Composición básica de una población  y de su estructura
+
+La demografía se centra en ciertas características escenciales, por citar las principales, el sexo, la edad, el estado civil, el lugar de nacimiento y de residencia. Características que unidas al conocimiento de las sociedades económicas y biofísicas permiten construir un perfil individual útil para interpretar y entender los fenómenos relacionados con la fecundidad, mortalidad y movilidad
+
+La finalidad de la demografía consiste en entender por qué,en la realidad, se encuentran colectivos en fuerte crecimiento junto a otros en declive o extinción.
+
+Las poblaciones tambien se definen por su estructura, es decir, por su composición por edad, sexo, estado civil, etc.
+
+La estructura por edad es de interés primordial
+Las modificaciones de la estructura de la población implica el estudio de los procesos demográficos
+
+
+### Proceso de cohesión y de agregación en una poblacion
+
+las poblaciones no son meras sumas de individuos ya que en su formación intervienen procesos de cohesión que agregan los individuos en pareja, familias, comunidades o grupos de complejidad y dimensión superiores
+Condicionan el agrupamiento de las poblaciones en familia
+ 
+
+### Lo biológico y lo social, o las dos armas de la demografía
+
+Ambas están relacionadas y son interdependientes. Los factores sociales y biológicos coexisten
+Finalmente, existe, entre otros factores naturales y sociales por un ado y los fenómenos demográficos por otro, una interacción recíproca que no se limita al efecto de los primeros sobre los segundos, sino que tambipen, aunque con diferente intensidad, se da en sentido inverso
+
+Lo dicho hasta ahora equivale a reafirmar la interdisciplimariedad de la investigación demográfica cuando ésta se desplaza de la fase de enumeración y medida de los fenómenos.
+
+
+### La demografía y sus métodos
+
+No se pueden exponer los métodos de análisis de una disciplina como la demografía sin referirse al material que constituye su objeto de estudio. De hecho, su naturaleza condiciona el tipo de análisis y la naturaleza de los métodos aplicables y por ende el grado de detalle, la cobertura y la significación de los resultados.
+
+Se entiende por fuentes el instrumento institucional u organizativo mediante el cual se recogen los datos de interés demográfico. La naturaleza de los datos en cambio, se refiere a la unidad objeto de la recogida de datos, a las características descritas, su elaboración y presentación. La fuiabilidad y los errores se refieren a la correspondencia entre el dato estadístico y la realidad
+
+
+### las fuentes de datos de stock: los censos
+
+El conocimiento de los datos de estado o de stiock, e pbtiene normalmente con una operación llamada censo. Debe complir ciertos requisitos:
+
+1. Operación de contabilización individual
+
+2. Universal: dentro de los límites del territorio censado
+
+3. Simultaneo:la enumeración debe referirse a un mism día u hora
+
+4. Periodicidad definida
+
+
+### Naturaleza de los datos
+
+La unidad de recogida (es decir, la entidad que define el objeto de la recogida de datos) es normalmente la familia. Según la definición del censo de 1991 de España.
+La familia se define como el grupo de personas (dos o más) que, residiendo en la misma vivienda familiar, comparten algunos gastos en común y
+están vinculados por lazos de parentesco, ya sean de sangre o políticos, e independientemente de su grado
+
+Finalmente, una última observación: el censo, por su naturaleza de encuesta
+total -dirigida a toda la población- es una operación que no se presta a entrar
+en refinados detalles que, sin embargo, resultarían muy útiles
+
+
+### Validez y errores de los datos censales
+
+El hecho de que los resultados del censo adquieran validez oficial no es suficiente garantía de su exactitud. No interesa aquí hablar de la exactitud de las informaciones de índole social y económica (instrucción, ocupación, profesión,etc.) y me limitaré a considerar las características estrictamente demográficas (sexo, edad, estado civil, lugar de nacimiento y residencia, etc.) sobre las cuales se basa la metodología del análisis demográfico.
