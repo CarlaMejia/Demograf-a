@@ -1,0 +1,13 @@
+install.packages("dplyr") 
+require(dplyr)
+mundo<- as_tibble(read.csv(file.choose()))
+ita<-mundo %>%
+  as_tibble() %>%
+  filter (iso_code== "ITA") %>%
+  mutate (acumulado =cumsum (new_cases)) #%>%
+  filter(between (new_cases, 200000, 228000))
+  
+itamax<-mundo
+ as_tibble() %>%
+filter(between(new_cases, 200000,228000)) 
+ table(itamax$location)
