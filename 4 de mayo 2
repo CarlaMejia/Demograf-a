@@ -1,0 +1,24 @@
+---
+title: "Fecundidad ecuaciones"
+author: "Carla"
+date: '2022-05-04'
+output: html_document
+---
+
+gpoedad<-c("15-19", "20-24", "25-29", "30-34", "35-39", "40-44")
+nac <-c(12130,42103,80933,93107,55985,11480)
+pobfem <-c(727168,782583,791698,751566,814971,769345)
+nacfem <-c(5895,20461,39331,45247,27207,5579)
+nachom <-(nac-nacfem)
+propsex=(sum(nachon)/sum(nacfem))*100
+S= (100/(100+propsex))
+tef <-(nac/pobfem)
+teffem <-(nacfem/pobfem)
+n=5
+TGrF=sum(nac/pobfem)*n
+TGF <-sum(tef)*n
+TBR <-TGF*5
+tasas <-data.frame(gpoedad,nac,pobfem,nacfem,nachom,tef,teffem)
+tasas
+
+hacer análisis comparativo de los dos países elegidos con respecto a las TG y TBR...en rmarkdown añadir un poco de contexto sobre las diferencias de los países
