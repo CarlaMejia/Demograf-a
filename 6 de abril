@@ -1,0 +1,26 @@
+ags<-read.csv(file.choose())
+install.packages("dplyr")
+require(dplyr)
+ags<-ags %>%
+as_tibble() %>%
+mutate (gpoeda = case_when(EDAD>=0 & EDAD <=4 ~ 1,
+        EDAD >=5 & EDAD <=9 ~ 2,
+        EDAD >=10 & EDAD <=14 ~ 3,
+        EDAD >=15 & EDAD <=19 ~ 4,
+        EDAD >=20 & EDAD <=24 ~ 5,
+        EDAD >=25 & EDAD <=130 ~ 6,
+        EDAD == 999 ~ 7), SITUA_CONYU=case_when((SITUA_CONYUGAL==1 | (SITUA_CONYUGAL>=5 & SITUA_CONYUGAL<=7))~1,
+                                                SITUA_CONYUGAL>=2 & SITUA_CONYUGAL<=4~2,SITUA_CONYUGAL==8~3,SITUA_CONYUGAL==9~4))%>%
+filter(SEXO==3 & (EDAD>=50 & EDAD<=130))%>% ##SEXO IGUAL A 3(QUE ES MUJER) Y QUE SE ENCUENTRE ENTRE ESAS EDADES 
+select(SEXO, MUN, INGTRMEN, EDAD, SITUA_CONYU, SITUA_CONYUGAL, gpoeda )%>%##mostrar solo las columnas que me interesan
+
+  agsmuj1%>%
+  group_by(MUN)%>% #agrupar
+summarise(mediana=median(INGTRMEN,na.rm=T))#me eliminas los NA
+
+
+##names (agsmuj)##ver nombre de las columnas
+
+
+#table(agsmuj$SEXO) ##CORROBORRAR QUE SI ME CORRI? ESAS VARIABLES
+#table(agsmuj$gpoeda)
