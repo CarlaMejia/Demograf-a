@@ -1,0 +1,132 @@
+---
+title: "Tablas de vida"
+author: "Carla Sánchez"
+date: '2022-05-25'
+output:
+  pdf_document: default
+  html_document: default
+---
+¿Para qué nos sirven las tablas de vida?
+
+1. Nos sirve para calcular la esperanza de vida de una población.
+
+2. Cualquier población es una población de 100 mil personas.
+
+En el análisis demográfico ha existido una inquietud desde sus inicios, la cual consiste en conocer  la longevidad de la población o el estudio del número de años que viven las personas. 
+
+Es importante señalar que la longevidad ha tenido una serie de cambios a través del tiempo y en las diferentes regiones.
+
+Las diferencias en la mortalidad se presentan entre población, en las edades, en el sexo, niveles socioeconómicos, etc.
+
+Estas diferencias pueden ser matizadas a través de una medida que consiste en conocer cuántos años vive una cohorte nacida en un año n.
+
+La idea de una tabla de vida es conocer como viven en promedio las personas hasta que se extengan, con esto se puede obtener el número de años en promedio que vive la población estudiada.
+
+Las tablas de vida se proponen como una estimación de la esperanza de vida, se utilizan tasas de sobrevivencia en edades desplegadas o grupos de edad.
+
+Para la construcción de una tabla de vida (TV) se plantean los siguientes supuestos:
+
+1. En la población estudiada, NO HAY MIGRACIÓN.
+
+2. Las tasas específicas de mortalidad NO cambian en el tiempo.
+
+3. La población inicial es de 100,000 personas.
+
+Por otro lado, la TV se puede calcular por sexo o por toda la población.
+
+La información mínima para calcular la TV es el número de defunciones por edad y la población a mitad de año.
+
+Construcción de una TV población hipotética de 100000 personas en el año t.
+
+  1. Tasas específicas de mortalidad
+      
+      $$m_x= \frac{d_x}{P_x}$$
+donde
+      
+$m_x=$ tasa especifica de mortalidad en la edad x.
+
+$d_x=$ defunciones en la edad x
+
+$P_x=$ Población a mitad de año en la edad x.
+
+  2. Probabilidad de muerte
+    
+    La probabilidad de muerte es representada a través de $q_x$ y se define como la probabilidad de morir entre la edad x y x+1.
+    
+  $$q_x=\frac{d_x}{P_x + \frac{1}{2} d_x}$$
+    donde:
+    
+  $q_x=$ es la probabilidad de muerte
+  
+  $P_x$ población a mitad de año
+  
+  $d_x$ defunciones a la edad x
+  
+Sabemos que 
+
+  $$m_x= \frac{d_x}{P_x} \rightarrow d_x= m_x P_x$$
+  $$\rightarrow q_x= \frac{m_x P_x}{P_x +\frac{1}{2}m_x P_x}$$
+  $$\rightarrow q_x= \frac{m_x P_x}{\frac{2P_x +m_x P_x}{2}}$$
+  $$\rightarrow q_x= \frac{2m_x P_x}{2P_x +m_x P_x}$$
+ $$\rightarrow q_x= \frac{2m_x P_x}{P_x(2 +m_x )}$$  
+ $$\rightarrow q_x= \frac{2m_x}{2 +m_x }$$  
+ La ecuación $q_x$ es válida para las edades mayores a 1, por lo que la probabilidad de morir entre 0 y 1 año es:
+ 
+ $$q_x= \frac{d_0}{N}$$
+ donde:
+ 
+ $q_0$ es la probabilidad de morir a edad 0
+ 
+ $d_0$ número de muertes edad 0
+ 
+ $N$ nacidos vivos de la población en estudio
+ 
+ Por otro lado, también se considera que las personas mayores a edad 100 años se mueren todas por lo que se plantea.
+ 
+ $$q_x=1$$
+ 
+ Con base en lo anterior, se puede plantear la probabilidad de sobrevivencia como:
+ 
+ $$p_x= 1-q_x$$
+ Donde:
+ 
+ $p_x$ es la probabilidad de sobrevivencia a edad x
+ 
+ $q_x$ es la probabilidad de morir a edad x
+ 
+ Con $q_x$ y la población inicial de 100000, el número de muertes $d_x$ de la edad x a x+1 se puede conocer mediante otro indicador que es $l_x$ y se define como los sobrevivientes a la edad x.
+ 
+ $$\rightarrow d_x=q_xl_x$$
+ 
+ donde:
+ $d_x$ defunciones edad x
+ 
+ $q_x$ probabilidad de morir a edad x
+ 
+ $l_x$ número de sobrevivientes a edad x
+ 
+ $\rightarrow l_{x+1}= l_x - d_x$
+ 
++----------+----------+----------+----------+
+| $P_x$    | $q_x$    | $d_x$    | $l_x   $ | 
++:========:+:========:+:========:+:========:+
+| 100000   | 0.00015  | 15       | 100000   | 
++----------+----------+----------+----------+
+|          |          |          | 100000   | 
++----------+----------+----------+----------+
+
+
+## Años personas vividas y esperanza de vida
+
+Los años personas vividas se definen como aquellos que sobreviven desde la edad 0 hasta la edad x y se plantea como $L_x$
+ $$L_x= l_{x+1}+ \frac{1}{2}d_x$$
+ sustituyendo $d_x$
+ 
+ $$L_x= l_{x+1}+ \frac{1}{2}(l_x-l_{x+1})$$
+ para $L_0$ se calcula $L_0=3l_0+0.7l_1$
+ 
+  
+    
+      
+      
+
