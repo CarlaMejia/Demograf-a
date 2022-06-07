@@ -1,0 +1,66 @@
+---
+title: "Tabla de vida"
+author: "Carla Sánchez"
+date: "27/5/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Con los años personas vividas (lx) ahora se calcula el total de personas vividas a la edad x con la siguiente ecuación:
+
+T<sub>x</sub>=L<sub>x+L</sub>+...+L<sub>w</sub>
+
+
+Tx=Total de personas que viven a la edad x
+
+Lx= Años personas que vividas a edad x
+
+Los indicadores anteriores se plantearon calcular la esperanza de vida "y" y se define:
+
+$e_x=\frac{Tx}{lx}$ =75 años aproximadamente
+
+Esto a partir de las siguientes formulas
+
+$m_x=\frac{\frac{def}{3}}{Pob_x}$ 
+
+$q_x=\frac{2*m_x}{2+m_x}$
+
+$q_x[0]=\frac{def[1]}{3}$
+
+</span>
+
+### <span style="color:LightSeaGreen"> ACTIVIDAD 1:   Tabla de vida </span>
+
+<span style="color:purple">Para ello ocuparemos las formulas mencionadas anteriormente, para realizar la tabla de la siguiente forma:</span>
+
+```{r pressure, echo=FALSE}
+def<- c(2107,157,107,65,64,50,53,36,40,50,33,45,61,64,56,99,128,228,313,310,342,359,315,382,378,346,345,374,359,400,378,457,468,486,495,543,572,532,530,585,646,674,754,810,852,940,997,1064,1160,1194,1263,1299,1412,1531,1642,1810,1795,1970,2221,2468,2487,2540,2500,2752,2872,3027,3216,3382,3567,3729,3825,3991,4257,4559,5048,5554,6059,6430,6805,7046,7255,7345,7335,7426,7339,6930,6295,5643,4925, 4548,4168,3676,3103,2440,1898,1452,1086,728,490,326,521)
+pob <- c(137142,133215,131863,131550,132079,134757,135688,135644,136510,137324,138726,141998,141896,142339,143270,144259,144591,141421,139874,141924,145217,145795,145722,148494,147772,145090,140700,136920,136577,136913,138033,140798,144884,149262,156961,158929,152278,149190,144668,142998,143664,145606,152324,153253,153474,151534,148662,145121,141342,140060,139951,135295,131617,131552,128806,126318,125839,120511,122914,128140,108036,103539,97683,89588,88021,82127,79287,75814,71875,69111,66313,61145,58941,57185,55513,55271,53469,49760,47596,44296,40960,36590,32686,28931,25918,22212,18884,13723,11052,9453, 7658,6058,4628,3379,2352,1667,1165,684,475,331,464)
+N=416576
+m=(def/3)/pob
+lx<-numeric(101)
+lx[1]=100000
+qx<-(2*m)/(2+m)
+qx[1]<-(def[1]/3)/(N/3)
+px=1-qx
+for(i in 1:100){
+  lx[i+1]=ceiling(lx[i]*(1-qx[i]))
+}
+Lx<-numeric(101)
+  for(i in 1:100){
+    Lx[i]<-lx[i+1]+0.5*(lx[i]-lx[i+1])
+  }
+dx=lx*qx
+  Tx<-sum(Lx)
+ex=Tx/lx
+  tabla_vida<-data.frame(pob,def,m,qx,px,dx,lx,Lx,Tx,ex)
+  require(DT)
+  DT::datatable(tabla_vida)  
+```
+
+
