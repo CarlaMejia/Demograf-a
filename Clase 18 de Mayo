@@ -1,0 +1,67 @@
+---
+title: "Mortalidad"
+author: "Carla Sánchez"
+date: "18/5/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Esperanza de vida sea mayor
+pensiones
+mayores gastos de salud(privado y público)
+Presión hacia PEA(Pob Economicamente Activa) privado y público
+
+
+## Muerte
+Desaparición de toda evidencia de vida en cualquier tiempo después de que una persona haya nacido viva
+
+### Tasa Bruta de Mortalidad
+<frac>{TBM<sub>t->t+n</sub>=M<sub>t->t+n</sub>}{P_t->t+n}
+donde M=Muertes del tiempo t a t+n
+P=Población a mitad de año de t a t+n
+Ejemplo
+Muertes-<623,300
+Población a mitad de año->127,000,000
+
+TBM=623,300/127,000,000=0.004907
+TBM*1000=4.9
+
+La TBM se interpreta como 4.9 muertes por cada 1000 personas
+
+### Tasa específica de mortalidad
+
+La tasa específica de mortalidad calcula la mortalidad por grupos de edad y permite conocer la tasa por cada grupo de edad.
+
+La TEM se calcula porque la mortalidad es diferenciada por edad o grupo de dad. Por ejemplo, las personas de 0 a 9 años tienen una mayor mortalidad que las personas de 1 a 4 años o 5 a 9 años
+
+TEM_<sub>{t->t+n}>/sub>=/frac{{M<sub>{t->t+n}</sub>^{i}}{P_{t->t+n}}
+
+i=grupo de edad
+M^{i}=Muertes del año t al t+n
+P= Población a mitad del año t a t+n
+
+
+#### EJEMPLO
+
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
