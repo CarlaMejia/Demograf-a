@@ -1,0 +1,45 @@
+---
+title: "tasas"
+author: "Carla"
+date: '2022-04-29'
+output: html_document
+---
+
+
+## TGF
+ Si tenemos una población femenina de 15 a 45 años donde la suma de nacimientos de esta población en el año 2009 es de 1896 niños y esta poblción son 1000 mujeres
+TGF=$\dfrac{NO.NACIMINTOS}{POBLACIÓN FEMENINA}$
+
+en este caso:
+TGF=$\dfrac{1896}{1000}$
+Por cada mujer nacen 1.9 niños
+
+##TASA BRUTA DE REPRODUCCIÓN
+$TBR=SUMA(TEF)*S$
+
+TEF= Tasa específica de fecundidad
+
+S=$\dfrac{100}{100+proporción de sexos}$
+
+proporción sexo=$\dfrac{nachombres}{nacmujeres}$##cuantas niñas nacen por cada mujer 
+
+
+TBR= numero promedio de niñas que nacen por cada mujer
+TNR= numero de mujeres que sobreviven
+
+### Ejemplo:
+
+gpoedad<-c(15-19, 20-24, 25-29, 30-34, 35-39, 40-44)
+nt<-c(12130,42103,80933,93107,55985,11480) #nacimientos totales
+mujeres<-c(727168,782583,791698,751566,814971,769345)
+nacimientosm<-c(5895,20461,39331,45247,27207,5579)    #nacimientos mujeres
+TEF<-(nt/mujeres)
+TEF
+ejemplo<-data.frame(gpoedad,nt,mujeres,nacimientosm,TEF)
+SUMA=sum(TEF)
+ps<-(sum(nt-nacimientosm)/sum(nacimientosm))*100
+ps
+S<-100/(100+ps)
+S
+TGF=SUMA*5
+TBR=SUMA*S*5
