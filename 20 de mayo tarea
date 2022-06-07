@@ -1,0 +1,84 @@
+---
+title: "Mortalidad en entidades"
+author: "Carla Sánchez"
+date: "22/5/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+causa=c("diabetes mellitus","homicidio","tumores: prostata y mama","enfermedades del corazón","COVID")
+hombrescdmx<-c(7884,1196,778,11669,18948)
+mujerescdmx<-c(6678,144,831,9328,10525)
+pobcdmx=9209922
+pobedomex=16992418
+##total de defunciones por enfermedad específicas
+td=hombrescdmx+mujerescdmx
+porch=hombrescdmx/td
+porch
+porcm=mujerescdmx/td
+porcm
+##totaldefuncionesgeneral
+total=sum(hombrescdmx)+sum(mujerescdmx)
+tdg=td/total
+tdg
+##Tasa de mortalidad
+tasacdmx= (td/pobcdmx)*100000
+mortcdmx<-data.frame(causa, porch,porcm,tdg,tasacdmx)
+colnames(mortcdmx)<-c("causas","%muerte hombres","%m mujeres","Distribución","Tasa mort")
+mortcdmx
+
+
+##total de defunciones por enfermedad específicas
+pobedomex=16992418
+hombresedomex<-c(14675,2648,893,15773,22942)
+mujeresedomex<-c(11778,432,960,12606,12743)
+tdomex=hombresedomex+mujeresedomex
+porchedomex=hombresedomex/td
+porchedomex
+porcmedomex=mujeresedomex/td
+porcmedomex
+##totaldefuncionesgeneral
+total2=sum(hombresedomex)+sum(mujeresedomex)
+tdg2=tdomex/total2
+tdg2
+##Tasa de mortalidad
+tasaedomex= (tdomex/pobedomex)*100000
+
+mortedomex<-data.frame(causa, porchedomex,porcmedomex,tdg2,tasaedomex)
+colnames(mortedomex)<-c("causas","%muerte hombres","%m mujeres","Distribución","Tasa mort")
+
+
+
+
+```
+
+## Principales causas de muerte de México en 2021
+
+De acuerdo con el estadístico de defunciones registradas de enero a junio de 2021 en el periodo de referencia, las tres principales causas de muerte a nivel nacional fueron: 
+
++ COVID-19 (145,159; 25.0%)
+
++ enfermedades del corazón (113,899; 19.7%)
+
++ Dabetes mellitus (74,418; 12.8%).
+
++ Tumores malignos
+
++ Homicidio. Los homicidios son la quinta causa de muerte en la población en general (36 661, 4.9%) y la cuarta causa de muerte en hombres (32 530).
+
+A continuación se hace referencia a los porcentajes de las entidades Estado de México y Ciudad de México que tienen de cada causa de mortalidad
+
+### CIUDAD DE MÉXICO
+A continuación se presenta la tabla que representa los pocentajes
+la primera columna indica la causa de muerte principal en ambas entidades, la segunda y tercera el porcentaje de defunciones en hombres y mujeres respectivamente debido a la causa específica.
+
+En la cuarta la distribución por causas de muerte y finalmente en la quinta se muertra la tasa de mortalidad por causa por cada 100,000 habitantes
+
+```{r cars}
+mortcdmx
+```
+
+### ESTADO DE MÉXICO
+```{r cars2}
+mortedomex
+```
