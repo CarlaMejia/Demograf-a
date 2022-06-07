@@ -1,0 +1,88 @@
+---
+title: "FECUNDIDAD"
+author: "Carla"
+date: '2022-04-20'
+output: html_document
+---
+
+## FECUNDIDAD
+
+En la demografía existen 2 conceptos que es necesario diferenciar
+Fecundidad se refiere al número de hijos que tienen las mujeres
+Fertilidad se refiere a la capacidad biológica de la mujer de tener hijos
+
+Fecundidad:
+Factoresque impactan en la fecundidad de las mujeres:
+
+- Educación
+- Económica
+- Estado civil
+- Fisiológicos
+- Cultura
+- Familia
+- Morbilidad
+- Acceso a anticonceptivos
+- Mercado de trabajo
+- Fertilidad
+
+Población México Ley general de población 1974 CONAPO
+
+
+TASA BRUTA DE NATALIDAD
+
+$TBN =\dfrac {NACIMIENTOS}{POBLACIÓN MEDIA}$
+
+Normalmente esta TBN se utiliza de manera anual y se interpreta en miles de personas
+
+Ejemplo:
+
+- Nacimientos =470,900
+- Población= 27,720,000
+- TBN= 470 900/27,720,000
+
+La TBN tambien se puede interpretar multiplicandola por 1000, es decir, que en esta población nacen 17 niños por cada mil habitantes
+
+f=function(x,y) {(x-y)/}
+
+TASAS ESPECÍFICAS DE FECUNDIDAD
+---generales de fecundidad
+
+###Tasa específica de fecundidad
+Se define de la siguiente manera
+ $TEF=\dfrac{NACIMIENTO ^i}{(POB FEMENINA ^i}$
+
+EJEMPLO:
+
+
+```{r cars}
+edad<-c("15-19","20-24","25-29","30-34","35-39","40-44")
+nv<-c(14687,116809,307767,389795,209707,31270) #nacidos vivos
+pf<-c(2974000,3404000,3688000,4286000,4776000,4243000)
+tef<-1000*(nv/pf)
+tef
+df=data.frame(edad,nv,pf,tef)
+df
+```
+
+## tasa general de fecundidad
+
+$TGF=\dfrac{\sum_{15}^{44} nacimientos^i}{\sum_{15}^{44} pob femenina^i}$
+
+
+edad2<-c("15-19","20-24","25-29","30-34","35-39","40-44")
+nv2<-c(283536,	481311,	415706,	284927,	136289, 28760) #nacidos vivos
+pf2<-c(5505991,	5079067,	4582202,	4444767,	4328249, 3658904)
+tef<-1000*(nv2/pf2)
+tef
+df2=data.frame(edad2,nv2,pf2,tef)
+df2
+suma(nv2)
+
+
+
+
+
+
+
+
+
