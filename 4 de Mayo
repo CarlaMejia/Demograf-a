@@ -1,0 +1,41 @@
+gpoedad<-c("15-19", "20-24", "25-29", "30-34", "35-39", "40-44")
+nac <-c(12130,42103,80933,93107,55985,11480)
+pobfem <-c(727168,782583,791698,751566,814971,769345)
+nacfem <-c(5895,20461,39331,45247,27207,5579)
+nachom <-(nac-nacfem)
+propsex=(sum(nachom)/sum(nacfem))*100
+S= (100/(100+propsex))
+tef <-(nac/pobfem)
+teffem <-(nacfem/pobfem)
+n=5
+TGrF=sum(nac/pobfem)*n
+TGF <-sum(tef)*n
+TBR <-TGF*5
+tasas <-data.frame(gpoedad,nac,pobfem,nacfem,nachom,tef,teffem)
+tasas
+
+Hacer análisis comparativo de los dos países elegidos con respecto a las TG y TBR...en rmarkdown añadir un poco de contexto sobre las diferencias de los países
+
+
+## MUNICIPIO ACULCO
+gpoedad<-("15-19", "20-24", "25-29", "30-34", "35-39", "40-44")
+nac1<-c(26,57,59,39,12,3)
+nach1<-c(13,31,30,19,4,2)
+pobfem1<-c(2355,2121,2004,1994,1799,1630)
+nacm1<-(nac1-nach1)
+propsex=(sum(nach1)/sum(nacm1))*100
+S1= (100/(100+propsex))
+tef1 <-(nacm1/pobfem1)
+teffem1 <-(nacm1/pobfem1)
+n=5
+TGrF1=sum(nac1/pobfem1)*n
+TGF1 <-sum(tef1)*n
+TBR1 <-TGF1*5
+tasas1 <-data.frame(gpoedad,nac1,pobfem1,nacm1,nach1,tef1,teffem1)
+tasas1
+
+## MUNICIPIO ALMOLOYA DE JUAREZ
+nac2<-c(34,93,76,40,12,3)
+nach2<-c(1,13,46,44,24,1)
+pobfem2<-c(7959,7299,7222,7079,6812,6169)
+nacm2<-(nac2-nach2)
