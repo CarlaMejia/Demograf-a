@@ -1,0 +1,21 @@
+---
+title: "Ejercicios"
+author: "Carla"
+date: '2022-03-30'
+output: html_document
+---
+
+# TASAS BRUTAS DE LA ENTIDAD DE CHIHUAHUA
+
+### TASA DE NATALIDAD BRUTA
+
+```{r cars}
+P_total<- 126014024
+Nacimientos<-35284
+defunciones<-39246
+emigracion<-60224
+inmigracion<-89954
+
+TN<-(Nacimientos/P_total)
+TN
+```
