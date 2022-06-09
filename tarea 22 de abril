@@ -1,0 +1,31 @@
+---
+title: "tarea 22 abril"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## función
+definimos la función con valores de entrada y salida de las edades de las cuales se desea calcular el número de hijos
+
+
+hijos<-function(X,y){
+resta<-(y-X)
+divisor<-(10.25/12)
+result<-(resta/divisor)
+return(result)
+}
+hijos(15,45)
+hijos(20,45)
+hijos(30,45)
+
+
+```{r pressure, echo=FALSE}
+hijos(15,45)
+hijos(20,45)
+hijos(30,45)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
