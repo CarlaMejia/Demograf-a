@@ -1,0 +1,23 @@
+install.packages("ggplot2")
+require(ggplot2)
+edad<-c("15-19","20-24","25-29","30-34","35-39","40-44")
+nv<-c(14687,116809,307767,389795,209707,31270)            #nacidos vivos
+pf<-c(2974000,3404000,3688000,4286000,4776000,4243000)    #población femenina
+tef<-1000*(nv/pf)
+tef
+df=data.frame(edad,nv,pf,tef)
+df
+grafica1
+
+grafica1 <- ggplot(grafica, aes(x = edad,y = tef)) +
+  geom_point(colour = "darkorchid3",size = 3) + geom_line(color="deeppink3", size=1,linetype = "dashed") + 
+  labs(x = "Edades Agrupadas", y =  "Esperanza de Vida") +
+  theme(axis.title.x = element_text(face="bold", vjust=-0.5, colour="deepskyblue4", size=rel(1))) +
+  theme(axis.title.y = element_text(face="bold", vjust=1.5, colour="darkcyan", size=rel(1))) +
+  scale_x_continuous(breaks = c(1:16),labels = c("0 a 4","5 a 9","10 a 14","15 a 19","20 a 24",
+                                                 "25 a 29","30 a 34","35 a 39","40 a 44","45 a 49",
+                                                 "50 a 54","55 a 59","60 a 64","65 a 69","70 a 74","75 a +")) +
+  ggtitle ("Grafica de Esperanza de Vida por Edad Agrupadas \n Jalisco 2000") +
+  theme (plot.title = element_text(family="Comic Sans MS",size=rel(1), vjust=2,face="bold", 
+                                   color="darkred", lineheight=1.5))
+grafica1
