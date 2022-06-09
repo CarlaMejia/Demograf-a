@@ -1,0 +1,40 @@
+---
+output: html_document
+---
+
+
+# TAREA PARA CÁLCULAR EL NÚMERO DE HIJOS QUE PUEDE TENER UNA MUJER FERTIL
+ 
+ 
+## Investigación previa
+ 
+ Las mujeres pueden reproducirse durante aproximadamente la mitad de su vida, y solo pueden dar a luz una vez al año, aproximadamente. Por lo tanto, tiene sentido que las mujeres solo puedan tener una pequeña parte del número de hijos que los hombres. Un estudió estimó que una mujer puede tener alrededor de 15 embarazos a lo largo de su vida. Y dependiendo de cuántos bebés nazcan en cada embarazo, probablemente podría tener entre 15 y 30 hijos.
+
+
+Pero la “madre más prolífica de la historia”, según el Libro Guinness de los Récords, fue la señora Feodor Vassilyev, en la Rusia del siglo XIX. Se dice que dio la luz a 69 niños, con más de 27 embarazos. Es mucho para una mujer. 
+
+
+ 
+ 
+ 
+## Formula con función para calcular hijos
+
+Considerando el tiempo de 9 meses en el que la mujer queda embarazada y una duración de 40 días para la recuperación de la mujer. son 10.25 meses para que vuelva a embarazarse de nuevo
+
+
+Si insertamos una función llamada hijos(x,y) tal que x es la edad inicial(al menos de 15 años) y la edad Y menor que 45. Lo anterior debido a que el periodo fertil de la mujer se considera a partir de los 15 años y antes de los 45
+
+
+
+
+
+
+```{r c}
+hijos<-function(X,y){
+resta<-(y-X)
+divisor<-(10.25/12)
+result<-(resta/divisor)
+return(result)
+}
+hijos(15,45)
+```
