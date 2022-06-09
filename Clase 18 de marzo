@@ -1,0 +1,44 @@
+---
+title: "TABLAS EN MARKDOWN"
+author: "Carla Sánchez"
+date: '2022-03-18'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+CLASE 5 
+
+install.packages("printr")
+require(printr)
+a <- c(1,2,3)
+b <- c("a","b","c")
+data <- data.frame(a,b)
+
+```{r cars}
+summary(cars)
+install.packages("printr")
+require(printr)
+a <- c(1,2,3)
+b <- c("a","b","c")
+data <- data.frame(a,b)
+table(data)
+```
+
+
+ent <- c("edomex","cdmx","chiapas")
+nac <- c(184447,65703,98098)
+def <- c(131133,132751,38662)
+CN <- nac - def
+CN
+inmI <- c(30788,18 813,4986)
+emiI <- c(,,)
+inminternos <- c(5190562,1679063,174961)
+Enminternos <- c(1344291,4955432,678362)
+CSi <- inminternos-Enminternos
+CSi
+
+
+ 
