@@ -1,0 +1,90 @@
+---
+title: "Clase  diagrama de lexis"
+author: "Carla Sánchez"
+date: "14/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## DIAGRAMA DE LEXIS
+
+El diagrama ayuda a comprender algunos eventos y fenomenos demograficos a través de una línea del tiempo
+Delimitación temporal en demografía es escencial el tiempo como un elemento indispensable para análizar la dinámica constante y cambios en la población
+
+En particular la demografía define dos tiempos
++ tiempo calendario
++ Tiempo de eventos demográficos
+
+Por ejemplo la edad se puede medir en dos sentidos:
++a partir del nacimiento
++ años cumplidos
+
+En demografía existe el cocepto de edad exacta
+
+suponga una persona nació el 23 de Julio de 1985 y para saber a edad exacta al momento 11 de marzo de 2022
+....
+
+han transcurrido 262 días hasta el 11 de marzo de 2022
+
+
+```{r cars}
+36+ (262/365)
+```
+
+esa es la edad exacta
+
+
+## Representación gráfica
+
+|----------|------|---------------------------------------------------------|
+1985        duración                                                     2022
+
+Un elemento es importante si ocurre y se interesa en fenómenos demográficos que ocurren a través del tiempo
+
+En ese sentido de Lexis puede representar los nacimientos, defunciones, matrimonios, etc
+En este diagrama serán tomados los años cumplidos y años calendario
+ 
+ ![](https://apuntesdedemografia.files.wordpress.com/2020/10/lexisdiagram.jpg){width='800px', length='800px'}
+ 
+ + FLUJO  población que permanece en el tiempo
+ + EFECTIVO: Ocurrencia de un evento en determiando tiempo
+ + COHORTE: Grupo de individuos que experimentan un evento durante un tiempo determinado
+ + GENERACIÓN: Grupo de individuos que nace en un momento determinado
+ 
+ Ahora vamos a plantear eventos demográficos que ocurren
+ 
+ + ab= Nacimientos de 1990
+ + ac+ad= dos lineas de vida
+ + abc= Defunciones 1990
+ 
+ 
+ En demografía hay 3 tipos de análisis
+ 
+ 1. Transversal Se asocia a momento en el tiempo
+ 
+ 2. Longitudinal estudios a través del tiempo, análisis de una generación o corte
+ 
+ 3.Retrospectivo: Estudios del tiempo pasado, es decir, análisis de vida de población adulta
+ 
+ 
+![]( https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKr4iJWvL2AHwuCnMqmJUA2avdZvBP5uMuO19qqwpCOzPpViDobQsEr6MxUdtGruIUYKU&usqp=CAU)
+
+## Medidas relativas
+
+### Razones
+Cociente de magnitudes independientes
+
+población_femenina/pob_masculina    cuantos hombres hay con respecto a la población femenina
+
+### Poporciones
+
+Pobmasculina/pobtotal= proporcion de hombres entre población total
+
+Pob femenina/pobtotal= priporción de mujeres por el total de población{
+
+### Tasa Cociente entre un flujo y un efectivo
+
+nacimientos/población masculina--- manera trasversal
