@@ -1,0 +1,87 @@
+---
+title: "Duplicidad de la población"
+author: "Carla Sánchez"
+date: "14/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## tiempo de duplicidad
+
+Lo que se intenta plantear y conocer es que un tiempo de una población determinada se duplica para lo anterior se busca la siguiente ecuación que esta basada en la tasa de crecimiento
+
+
+pt=población inicial
+Pt+n=POBLACIÓN FINAL
+R= TASA DE CRECIMIENTO POBLACIONAL
+n = tiempo
+
+
+Pt+n=Pt*exp(rn)
+
+#### Para conocer cuando se duplica la población necesitamos despejar a n, porque queremos saber en cuento tiempo
+
+Pt+n/Pt= exp(r*n)
+
+Pt+n/Pt=2
+
+2=exp(r*n)
+
+n=ln(2)/r
+
+Si tenemos una tasa de crecimiento de 1.399829, entonces el tiempo de duplicación es:
+
+```{r cars}
+n=0.06931/0.01399829
+```
+
+### Ejemplo:
+Queremos concocer el tiempo en que se va a duplicar la población en México
+
+## Dinámica demográfica
+En la deinámica demográfica se relaciona el tamaño, la composición, las pérdidas y las ganancias de la población
+
+El tamaño se refiere a la cantidad de personas que existen en un territorio en un tiempo determinado: la composición de una población se refiere al sexo, grupos de edad, pérdidas, fecundidad y la migración.
+
+### Tasas brutas de la poblaión
+
+Una tasa bruta no considera, como su nombre lo indica la descomposición de la población(edad, sexo, uniones, matrimonios)
+
+La vamos a definir de la siguiente manera
+
+TB=evento/población media
+
+##### Población media: Promedio de la población durante un periodo de tiempo
+##### Población a mitad de año: Relacion con los datos del censo, población al 30 de Junio del año en curso
+
+####Ejemplo
+Tenemos una población de 2004 de 293657000 y la de 2005 de 291410000, entonces la población media de 2004 y 2005 se calcula de la siguiente manera
+
+```{r}
+P_media=(293657000+291410000)/2
+```
+
+### Tasas específicas de la población
+
+Estas tasas si tienen relación con las características poblacionales: sexo, grupos de edad
+
+El plantamiento de las tasas específicas es la siguiente:
+
+$Te^i=evento^i/pob^i$
+donde:
+
+$Te^i=evento^i/pob^i$= tasa especifica
+
+$evento^i$=  numero del evento de la característica i
+
+$pob^i$= población media con la característica i
+
+
+PROPORCIÓN DE SEXOS
+
+Este es el otro indicador demográfico, que permite conocer la cantidad de hombres que existen con relación a la de mujeres
+
+Este indica el balance entre el número de hombres y mujeres
