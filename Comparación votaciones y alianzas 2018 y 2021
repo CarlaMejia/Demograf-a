@@ -1,0 +1,130 @@
+---
+title: "Comparación votaciones 2018 Y 2021 ALIANZAS"
+author: "Carla Sánchez"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+v2018<-read.csv(choose.files())
+v2021<-read.csv(choose.files())
+require(dplyr)
+require(DT)
+```
+
+## Comparación votaciones
+Para ello tenemos las TABLAS DE 2018 Y 2021 con las votaciones de las alianzas ppp(PRI-PAN-PRD) Y PM(PT,Morena)
+para hacer la comparación correspondientes
+
+Para ello seleccionamos las columnas más importantes, donde se muestra solamente el municipio, los votos a estas casillas y las alianzas correspondientes
+
+```{r,echo=FALSE}
+### Alianza 2018
+alianzas2018<-v2018 %>%
+  as_tibble()%>%
+  select(ID_MUNICIPIO,MUNICIPIO,NUM_VOTOS_VALIDOS,PRI,PAN,PRD,PAN_PRD,MORENA,PT,PT_MORENA)%>%
+  mutate_all( ~replace(., is.na(.), 0))%>%
+  mutate(SUMA_SECCIONPPP=(PRI+PAN+PRD+(PAN_PRD)),
+         SUMA_SECCIONPM=(MORENA+PT+PT_MORENA),
+         PORCENTAJEPPP=SUMA_SECCIONPPP/NUM_VOTOS_VALIDOS,
+         PORCENTAJEPM=SUMA_SECCIONPM/NUM_VOTOS_VALIDOS)
+#DT::datatable(alianzas2018)
+```
+
+
+```{r, echo=FALSE}
+### Alianza 2021
+   ##Por secciones......................2021
+   alianzas2021<-v2021 %>%
+   as_tibble()%>%
+   select(MUNICIPIO,VOTOS.VALIDOS,PRI,PAN,PRD,PT,MORENA,PAN_PRI_PRD,PAN_PRI,PAN_PRD,PRI_PRD,PAN_PRD,PT_MORENA)%>%
+   mutate_all( ~replace(., is.na(.), 0))%>%
+   mutate(SUMA_SECCIONPPP=(PRI+PAN+PRD+PAN_PRI_PRD+PAN_PRI+PAN_PRD+PRI_PRD+PAN_PRD),
+          SUMA_SECCIONPM=(MORENA+PT+PT_MORENA),
+          PORCENTAJEPPP=SUMA_SECCIONPPP/VOTOS.VALIDOS,
+          PORCENTAJEPM=SUMA_SECCIONPM/VOTOS.VALIDOS)
+ # DT::datatable(alianzas2021)
+```
+
+## ANÁLISIS DE DATOS
+
+Debido a la gran cantidad de datos que se manejan los agrupamos por municipio
+
+### Alianzas 2018
+
+```{r pressure, echo=FALSE}
+alianzas2018ppp<-alianzas2018%>%
+ as_tibble()%>%
+   select(ID_MUNICIPIO,MUNICIPIO,NUM_VOTOS_VALIDOS,SUMA_SECCIONPPP,SUMA_SECCIONPM)%>%
+   group_by(MUNICIPIO)%>%
+   summarise(NUMERO_VOTOS=sum(NUM_VOTOS_VALIDOS),
+             SUMA_FINAL_PPP=sum(SUMA_SECCIONPPP),
+             SUMA_FINAL_PM=sum(SUMA_SECCIONPM),
+             PORCENTAJEPPP=SUMA_FINAL_PPP/NUMERO_VOTOS,
+             PORCENTAJEPM=SUMA_FINAL_PM/NUMERO_VOTOS)%>%
+   mutate(DIFERENCIA_PORCENTAJES=abs(PORCENTAJEPPP-PORCENTAJEPM))
+ DT::datatable(alianzas2018ppp)
+```
+
+### Alianzas 2021
+
+```{r,, echo=FALSE}
+
+ alianzas2021ppp<-alianzas2021%>%
+   as_tibble()%>%
+   select(MUNICIPIO,VOTOS.VALIDOS,SUMA_SECCIONPPP,SUMA_SECCIONPM)%>%
+   group_by(MUNICIPIO)%>%
+   summarise(NUMERO_VOTOS=sum(VOTOS.VALIDOS),
+             SUMA_FINAL_PPP=sum(SUMA_SECCIONPPP),
+             SUMA_FINAL_PM=sum(SUMA_SECCIONPM),
+             PORCENTAJEPPP=SUMA_FINAL_PPP/NUMERO_VOTOS,
+             PORCENTAJEPM=SUMA_FINAL_PM/NUMERO_VOTOS)%>%
+   mutate(DIFERENCIA_PORCENTAJES=abs(PORCENTAJEPPP-PORCENTAJEPM))
+DT::datatable(alianzas2021ppp)
+```
+
+En ambas tablas se muestra la suma final de votos de la aplianza ppp(pri,prd,pan) y morena PM, donde se calcula la suma final de votos por municipios, y los votos validos en cada una,obteniendo el porcentaje que cada alianza ganó en su respectivo ese año
+
+## Unión de las tablas para datos finales
+
+donde x representa todos los datos recabados de las alianzas en 2018 y los datos con subindice y los que fueron obtenidos en 2021
+
+```{r, echo=FALSE}
+ELECCIONES<-merge(x = alianzas2018ppp, y = alianzas2021ppp, by = c("MUNICIPIO"))
+DT::datatable(ELECCIONES)
+```
+
+segun su porcentaje se muestra
+
+```{r, echo=FALSE}
+#ELECCIONES<-merge(x = alianzas2018ppp, y = alianzas2021ppp, by = c("MUNICIPIO"))
+#DT::datatable(ELECCIONES)
+```
+Finalmente para el análisis de la diferencia entre años y los porcentajes que se obtuvieron de alianzas entre cada periodo se muestra de la siguiente forma
+
+Los municipios que obtuvieron menor de 10% para la alianza PRI-PAN-PRD son:
+
+```{r, echo=FALSE}
+ELECCIONES2<-ELECCIONES%>%
+  as_tibble()%>%
+  select(MUNICIPIO,PORCENTAJEPPP.x,PORCENTAJEPPP.y,PORCENTAJEPM.x,PORCENTAJEPM.y)%>%
+mutate(DIFERENCIA_ALIANZAPPP=abs(PORCENTAJEPPP.x-PORCENTAJEPPP.y),
+       DIFERENCIA_ALIANZAPM=abs(PORCENTAJEPM.x-PORCENTAJEPM.y))%>%
+filter(DIFERENCIA_ALIANZAPPP<0.1)
+
+ELECCIONES3<-ELECCIONES%>%
+  as_tibble()%>%
+  select(MUNICIPIO,PORCENTAJEPPP.x,PORCENTAJEPPP.y,PORCENTAJEPM.x,PORCENTAJEPM.y)%>%
+  mutate(DIFERENCIA_ALIANZAPPP=abs(PORCENTAJEPPP.x-PORCENTAJEPPP.y),
+         DIFERENCIA_ALIANZAPM=abs(PORCENTAJEPM.x-PORCENTAJEPM.y))%>%
+  filter(DIFERENCIA_ALIANZAPM<0.1)
+ DT::datatable(ELECCIONES2)
+```
+
+La razón por la que se hacen cero algunos números, es porque no hubo votos en esas casillas, o en el archivo de excel se marcaban como 0 en cada dato de esos municipios
+
+
+Los municipios que obtuvieron menor de 10% para la alianza Pt-morena son:
+
+```{r, echo=FALSE}
+ DT::datatable(ELECCIONES3)
+```
