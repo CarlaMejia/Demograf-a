@@ -1,0 +1,401 @@
+---
+title: "Exámen Segundo Parcial análisis del 2020"
+author: "Carla Sánchez Mejía"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+## EDADES AGRUPADAS DATOS tampico
+gpoeda<-c("<un año","1-4 años","5-9 años","10-14 años","15 a 19 años","20-24 años","25-29 años","30-34años","35-39 años","40-44 años","45-49 años","50-54 años","55-59 años","60-64 años","65-69 años","70-74 años","75-79 años","80-84 años","85 años y más")
+hombres<-c(39,4,0,3,12,18,16,33,26,46,68,139,153,209,182,190,179,156,158)
+mujeres<-c(39,0,4,6,4,7,9,15,15,28,56,52,88,133,166,136,151,126,220)
+pobh<-c(1571,7501,10047,10730,11695,11645,9836,9579,9419,9294,10085,9532,8346,7267,5528,3903,2585,1653,1195)
+pobm<-c(1529,7365,9752,10255,11317,11651,10478,10208,10560,10752,11599,11442,9676,8758,6750,5155,3442,2533,2229)
+defm<-1256
+defh<-1640
+pobhombres<-sum(pobh)
+pobmujeres<-sum(pobm)
+du<-data.frame(gpoeda,hombres,mujeres)
+pobtotal=pobhombres+pobmujeres
+propdefuncioneshombres=(sum(hombres))/(sum(hombres)+sum(mujeres))
+propdefuncioneshombres
+propdefuncionesmujeres=(sum(mujeres))/(sum(hombres)+sum(mujeres))
+propdefuncionesmujeres
+```
+
+## Actividad 1
+
+### Análisis comparativo de tasas de mortalidad por sexo en México
+
+Para calcular la tasa de mortalidad lo primero que haremos será investigar el número de fallecimientos ocurridos en el año 2020, por edades y A NIVEL NACIONAL.
+
+|defunciones hombres | defunciones mujeres  |
+|--------------------|----------------------|
+|        446709      |         639277       |
+
+```{r, include=FALSE}
+##DATOS AGRUPADOS MEXICO
+pobtotalmexico<-126014024
+defmx<-446709
+defhmx<-639277
+```
+
+Obteniendo de la siguiente manera las tasas
+
+#### Tasa bruta de mortalidad hombres
+
+```{r, echo=FALSE}
+TBMhombresmexico<-(defhmx/pobtotalmexico)*10000
+TBMhombresmexico
+```
+
+#### Tasa bruta de mortalidad mujeres
+
+```{r, echo=FALSE}
+TBMmujeresmexico<-(defmx/pobtotalmexico)*10000
+TBMmujeresmexico
+```
+
+### TASA BRUTA DE MORTALIDAD EN TAMPICO
+
+Donde los fallecimientos generales de la población por sexo son
+
+|defunciones hombres | defunciones mujeres  |
+|--------------------|----------------------|
+|        1640        |         1256         |
+
+y la población total de Tampico es de 
+```{r cars}
+pobtotal
+```
+
+Por lo tanto, la TASA DE MORTALIDAD BRUTA DE MUJERES es de:
+
+```{r, echo=FALSE}
+TBM1=defm/(pobmujeres+pobhombres)*10000
+TBM1
+```
+
+Y la tasa de HOMBRES:
+
+```{r, echo=FALSE}
+TBM2=defh/(pobhombres+pobmujeres)*10000
+TBM2
+```
+
+
+### Análisis comparativo de tasas de mortalidad por edades agrupadas
+
+Se tiene el siguiente cuadro, donde se muestra información sobre los fallecimientos por edad Y SEXO Y EN LAS COLUMNAS TME se muestra la tasa de mortalidad específica por cada *10mil habitantes*
+
+#### MÉXICO
+```{r pressure, echo=FALSE}
+defhagmx<-c(10846,2197,1332,1827,6840,12248,15616,17053,20430,26290,35896,44034,53798,62714,64886,64760,61601,55785,76609)
+defmagmx<-c(8426,1689,957,1302,2620,3738,4798,5835,7810,11631,17816,23909,32626,40722,45272,47599,49012,50207,90213)
+# población agrupada por sexo nacional
+phagmx<-c(916140,4161342,5453091,5554260,5462150,5165884,4861404,4527726,4331530,4062304,3812344,3332163,2692976,2257862,1706850,1233492,847898,523812,433968)
+pmagmx<-c(896837,4073046,5311288,5389280,5344540,5256211,5131597,4893101,4688746,4441282,4130069,3705369,3002982,2563200,1938227,1413848,966684,651552,605583)
+TMEhmx<-defhagmx/phagmx*1000
+TMEmx<-defmagmx/pmagmx*1000
+TMEagmx<-data.frame(gpoeda, defhagmx, defmagmx,TMEhmx, TMEmx)
+DT::datatable(TMEagmx)
+```
+#### TAMPICO
+```{r, echo=FALSE}
+po=pobm+pobh
+TMEhombres<-hombres/pobh*1000
+TMEmujeres<-mujeres/pobm*1000
+TME<-data.frame(gpoeda, hombres, mujeres,TMEhombres, TMEmujeres)
+DT::datatable(TME)
+```
+
+### Actividad 2: Esperanza de vida
+
+### Por edades desplegadas
+### TAMPICO
+#### HOMBRES
+
+Obtenemos la siguiente tabla
+
+```{r, echo=FALSE}
+
+defh1<-c(36,0,1,1,2,0,0,0,0,0,0,1,0,1,1,0,1,7,3,1,2,9,1,2,4,1,4,7,2,2,7,5,5,6,10,7,0,7,4,8,7,
+        11,10,10,8,14,8,9,17,20,25,19,29,27,39,32,24,36,27,34,49,31,40,35,54,37,45,36,29,35,
+        37,32,45,36,40,45,28,39,42,25,38,24,38,29,27,31,19,16,18,12,10,12,14,3,7,5,4,0,4,1,2)
+defm1<-c(39,0,0,0,0,1,1,0,2,0,1,1,2,0,2,0,1,1,0,2,0,1,3,0,3,2,2,3,0,2,2,2,4,5,2,4,3,3,3,2,2,6,
+        7,2,11,7,12,15,10,12,8,12,7,11,14,15,17,13,24,19,25,29,15,33,31,35,37,32,34,28,18,29,
+        25,28,36,26,32,26,36,31,28,24,25,27,22,27,25,24,24,29,21,15,16,7,10,11,3,1,2,3,2)
+pobx<-c(3100,3263,3587,3884,4132,4191,3801,3864,4108,3835,4362,4160,4257,4051,4155,4300,
+        4273,4596,5067,4776,5163,4598,4714,4536,4285,4468,4072,3971,4122,3681,4886,3296,
+        4159,3738,3708,4253,4143,3631,4243,3709,4823,3237,4442,3915,3594,4884,4136,4129,
+        4289,4246,5256,3418,4593,3805,3902,4044,3752,3257,3573,3396,4220,2552,3375,2967,
+        2911,3145,2320,2258,2589,1966,2302,1591,1927,1686,1552,1575,1250,1079,1109,1014,
+        1241,702,787,747,709,631,534,417,315,308,277,188,195,140,127,89,60,35,43,24,41)
+pobdesph<-c(1571,1731,1759,1940,2071,2138,1920,1922,2093,1974,2290,
+            2098,2150,2066,2126,2163,2202,2316,2609,2405,2551,
+            2339,2350,2243,2162,2134,1939,1910,2064,1789,2339,
+            1565,1960,1842,1813,2057,1931,1686,2025,1720,2249,
+            1546,2033,1805,1661,2244,1873,1909,2055,2004,2436,
+            1482,2100,1713,1801,1802,1779,1548,1680,1537,1901,
+            1166,1560,1349,1291,1445,1058,1009,1118,898,974,
+            718,837,739,635,680,535,470,487,413,518,
+            283,306,290,256,254,179,157,109,104,101,55,67,48,34,25,13,11,17,8,13)
+pobdespm<-c(1529,1532,1828,1944,2061,2053,1881,1942,2015,1861,2072,
+            2062,2107,1985,2029,2137,2071,2280,2458,2371,2612,
+            2259,2364,2293,2123,2334,2133,2061,2058,1892,2487,
+            1731,2199,1896,1895,2196,2212,1945,2218,1989,2574,
+            1726,2409,2110,1933,2640,2263,2220,2234,2242,2820,
+            1936,2493,2092,2101,2242,1973,1709,1893,1859,2319,
+            1386,1815,1618,1620,1700,1262,1249,1471,1068,1328,
+            873,1090,947,917,895,715,609,622,601,723,
+            419,481,457,453,377,355,260,206,204,176,133,128,92,93,64,47,24,26,16,28)
+
+mxhombres=(defh1)/pobdesph
+mxmujeres=(defm1)/pobdespm
+qxh=2*mxhombres/(2+mxhombres)
+qxm=2*mxmujeres/(2+mxmujeres)
+NMu=1959
+NHo=2043
+qxh[1]=defh1[1]/3/NHo
+qxm[1]=defm1[1]/NMu
+edad=0:100
+lxh<-numeric(101)
+lxh[1]=100000
+for(i in 1:100){
+  lxh[i+1]=ceiling(lxh[i]*(1-qxh[i]))
+}
+Lxh<-numeric(101)
+for(i in 1:100){
+  Lxh[i]<-lxh[i+1]+0.5*(lxh[i]-lxh[i+1])
+}
+Txh=(sum(Lxh)-cumsum(Lxh)+Lxh)
+exh=Txh/lxh
+th<-data.frame(edad,lxh,qxh,mxhombres,Lxh,Txh,exh)
+DT::datatable(th)
+lxm<-numeric(101)
+lxm[1]=100000
+for(i in 1:100){
+  lxm[i+1]=ceiling(lxm[i]*(1-qxm[i]))
+}
+Lxm<-numeric(101)
+for(i in 1:100){
+  Lxm[i]<-lxm[i+1]+0.5*(lxm[i]-lxm[i+1])
+}
+for(i in 1:100){
+  Lxm[i]<-lxm[i+1]+0.5*(lxm[i]-lxm[i+1])
+}
+Txm=(sum(Lxm)-cumsum(Lxm)+Lxm)
+exm=Txm/lxm
+tm<-data.frame(edad,lxm,qxm,mxmujeres,Lxm,Txm,exm)
+plot(x=edad,y=lxh)
+```
+
+
+
+#### MUJERES
+
+```{r, echo=FALSE}
+DT::datatable(tm)
+plot(x=edad,y=lxm)
+```
+
+### MEXICO
+#### HOMBRES
+
+Obtenemos la siguiente tabla
+
+```{r, echo=FALSE}
+
+defuncionesh<-c(10846,932,547,378,340,287,275,245,237,288,257,
+                281,320,394,575,773,1134,1405,1678,1850,2234,
+                2585,2313,2439,2677,3085,3033,3071,3271,3156,3518,
+                3179,3267,3490,3599,3968,3826,4063,4151,4422,4850,
+                4714,5211,5685,5830,6648,6895,7270,7296,7787,8172,
+                8364,8774,9158,9566,10069,10424,10546,11139,11620,12334,
+                12306,12077,12771,13226,13291,13091,12628,12850,13026,13281,
+                12909,12977,12993,12600,12487,12322,12623,12123,12046,11841,
+                11477,11087,10777,10603,9949,9048,8287,7640,7271,6764,
+                5220,4440,3822,3427,2750,2188,1741,1310,950,1802)
+defuncionesm<-c(8426,750,412,304,223,957,208,173,185,200,191,216,
+                200,248,284,354,439,455,530,575,621,697,
+                718,709,782,832,914,925,979,970,1010,1104,
+                1130,1195,1184,1222,1328,1429,1568,1749,1736,1941,
+                2106,2325,2484,2775,3017,3304,3666,3809,4020,4147,
+                4424,4783,5068,5487,5945,6109,6482,6745,7345,7684,
+                8026,8037,8355,8620,9002,8897,9017,9007,9349,9213,
+                9372,9640,9573,9801,9699,9592,9880,9721,10120,10156,
+                9851,9896,10019,10285,9764,9034,8809,8151,8598,7980,
+                6316,5850,5026,4635,4015,2991,2504,1896,1488,3156)
+pobdespmxhombres<-c(916140,967223,1031816,1060809,1101494,1106361,1057642,1087091,1140496,1061501,1174026,
+                    1066706,1146128,1082309,1085091,1113136,1054448,1122956,1172693,998917,1146232,
+                    957236,1061846,1005112,995458,1063775,954163,955081,1001692,886693,1148015,
+                    734272,959947,849187,836305,966246,870975,767966,941824,784489,1059322,
+                    624905,928285,768115,681677,919327,718647,725378,763098,685894,890709,
+                    519757,711793,606024,603880,621423,591296,476655,524223,479379,627532,
+                    347068,456755,431407,395100,462245,316121,316743,349542,262199,332464,
+                    194181,272830,223788,210229,219479,178282,148489,171128,130520,156170,
+                    83368,102905,92350,89019,82532,65151,52994,43694,38980,39510,
+                    17136,20213,16679,13820,11533,8984,6309,5892,3897,6644)
+pobdespmxmujeres<-c(896837,942735,1009303,1047597,1073411,1072540,1027707,1059203,1093999,1047839,1125241,
+                    1034766,1103439,1058332,1067502,1080658,1032036,1089440,1134982,1007424,1161603,
+                    960314,1067065,1028971,1038258,1115241,1022308,999565,1042848,951635,1218303,
+                    807132,1037842,927893,901931,1036930,957381,832855,1000225,861355,1146683,
+                    690335,997622,850194,756448,976618,790847,782495,828232,751877,974467,
+                    580730,779167,675736,695269,694085,644523,536515,589095,538764,705998,
+                    399294,516023,488413,453472,520856,363669,350108,404171,299423,383782,
+                    219326,307181,256636,246923,250636,205385,168928,191770,149965,651552,192832,
+                    98336,127145,118019,115220,107237,85514,70759,58161,54223,56749,
+                    25149,30231,25074,22245,18384,13720,10227,9560,6699,11651)
+mxhombresmx=(defuncionesh)*(1-0.3)/pobdespmxhombres
+mxmujeresmx=(defuncionesm)/pobdespmxmujeres
+qmxh=2*mxhombresmx/(mxhombresmx+2)
+qmxm=2*mxmujeresmx/(2+mxmujeresmx)
+NMx=800264
+NHx=828944
+qmxh[1]=defuncionesh[1]*(1-0.3)/NHx
+qmxh[101]=1
+qmxm[1]=defuncionesm[1]/NMx
+edad=0:100
+lxhx<-numeric(101)
+lxhx[1]=100000
+for(i in 1:100){
+  lxhx[i+1]=ceiling(lxhx[i]*(1-qmxh[i]))
+}
+Lxhx<-numeric(101)
+for(i in 1:100){
+  Lxhx[i]<-lxhx[i+1]+0.5*(lxhx[i]-lxhx[i+1])
+}
+Txhx=(sum(Lxhx)-cumsum(Lxhx)+Lxhx)
+exhx=Txhx/lxhx
+th2<-data.frame(edad,lxhx,qmxh,mxhombresmx,Lxhx,Txhx,exhx)
+DT::datatable(th2)
+plot(edad,lxhx)
+lxmx<-numeric(101)
+lxmx[1]=100000
+for(i in 1:100){
+  lxmx[i+1]=ceiling(lxmx[i]*(1-qmxm[i]))
+}
+Lxmx<-numeric(101)
+for(i in 1:100){
+  Lxmx[i]<-lxmx[i+1]+0.5*(lxmx[i]-lxmx[i+1])
+}
+Txmx=(sum(Lxmx)-cumsum(Lxmx)+Lxmx)
+exmx=Txmx/lxmx
+tm2<-data.frame(edad,lxmx,qmxh,mxhombresmx,Lxmx,Txmx,exmx)
+
+```
+
+
+#### MUJERES
+
+```{r, echo=FALSE}
+DT::datatable(tm2)
+plot(edad,lxmx)
+```
+
+### Por Edades agrupadas
+#### Tampico
+#### Hombres
+
+```{r, echo=FALSE}
+mx1=(hombres)/pobh
+qx1=(mx1*10)/(2+(5*mx1))
+qx1[1]=(mx1[1]*2)/(2+(mx1[1]))
+qx1[19]=1
+lx1=numeric(19)
+lx2=numeric(19)
+lx1[1]=100000
+lx2[1]=100000
+for(i in 1:18){
+  lx1[i+1]=ceiling(lx1[i]-(lx1[i]*qx1[i]))
+}
+Lx1<-numeric(19)
+for(i in 1:18){
+  Lx1[i]<-(5/2)*(lx1[i]+lx1[i+1])
+}
+Tx1=(sum(Lx1)-cumsum(Lx1)+Lx1)
+ex1=Tx1/lx1
+
+mx2=(mujeres)/pobm
+qx2=(2*5*mx2)/(2+(5*mx2))
+qx2[1]=(mx2[1]*2)/(2+(mx2[1]))
+qx2[19]=1
+for(i in 1:18){
+  lx2[i+1]=ceiling(lx2[i]*(1-qx2[i]))
+}
+Lx2<-numeric(19)
+for(i in 1:18){
+  Lx2[i]<-(5/2)*(lx2[i]+lx2[i+1])
+}
+Tx2=(sum(Lx2)-cumsum(Lx2)+Lx2)
+ex2=Tx2/lx2
+
+tablavidahombres<-data.frame(gpoeda,pobh,lx1,qx1,mx1,Lx1,Tx1,ex1)
+DT::datatable(tablavidahombres)
+```
+
+#### Mujeres
+
+```{r, echo=FALSE}
+tablavidamujeres<-data.frame(gpoeda,pobm,lx2,qx2,mx2,Lx2,Tx2,ex2)
+DT::datatable(tablavidamujeres)
+```
+
+### Por Edades agrupadas
+#### México
+#### Hombres
+
+```{r, echo=FALSE}
+mxagh=(defhagmx)/phagmx
+qxagh=(2*mxagh*5)/(2+(5*mxagh))
+qxagh[1]=(mxagh[1]*2)/(2+(mxagh[1]))
+qxagh[19]=1
+lxagh=numeric(19)
+lxagm=numeric(19)
+lxagh[1]=100000
+lxagm[1]=100000
+for(i in 1:18){
+  lxagh[i+1]=ceiling(lxagh[i]-(lxagh[i]*qxagh[i]))
+}
+Lxagh<-numeric(19)
+for(i in 1:18){
+  Lxagh[i]<-(5/2)*(lxagh[i]+lxagh[i+1])
+}
+Txagh=(sum(Lxagh)-cumsum(Lxagh)+Lxagh)
+exagh=Txagh/lxagh
+
+mxagm=(defmagmx)/pmagmx
+qxagm=(2*5*mxagm)/(2+(5*mxagm))
+qxagm[1]=(mxagm[1]*2)/(2+(mxagm[1]))
+qxagm[19]=1
+for(i in 1:18){
+  lxagm[i+1]=ceiling(lxagm[i]*(1-qxagm[i]))
+}
+Lxagm<-numeric(19)
+for(i in 1:18){
+  Lxagm[i]<-(5/2)*(lxagm[i]+lxagm[i+1])
+}
+dxagm<-numeric(19)
+for(i in 1:18){
+  dxagm[i]<-(lxagm[i]-lxagm[i+1])
+}
+dxagh<-numeric(19)
+for(i in 1:18){
+  dxagh[i]<-(lxagh[i]-lxagh[i+1])
+}
+
+Txagm=(sum(Lxagm)-cumsum(Lxagm)+Lxagm)
+exagm=Txagm/lxagm
+
+tablavidahombresagmx<-data.frame(gpoeda,phagmx,lxagh,qxagh,mxagh,dxagh,Lxagh,Txagh,exagh)
+DT::datatable(tablavidahombresagmx)
+```
+
+#### Mujeres
+
+```{r, echo=FALSE}
+tablavidamujeresagmx<-data.frame(gpoeda,pmagmx,lxagm,qxagm,mxagm,dxagm,Lxagm,Txagm,exagm)
+DT::datatable(tablavidamujeresagmx)
+```
+
